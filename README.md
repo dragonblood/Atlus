@@ -2,7 +2,7 @@
 
 Requirements:<br>
 Django 2.2.4 <br>
-django-bootstrap4 0.0.8 <br>
+Django bootstrap4 0.0.8 <br>
 
 ## 1. Project Atlus
 
