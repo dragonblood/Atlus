@@ -8,6 +8,6 @@ class predicts(models.Model):
 	info = models.TextField(null=False, blank=False)
 	
 	def __str__(self):
-	 	return self.firstname
+	 	return self.firstnam
 
 
