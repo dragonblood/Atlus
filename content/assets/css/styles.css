@@ -1,0 +1,397 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+html {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /*background-image: radial-gradient(circle,#b098d0, #a287c8, #9575c0, #8764b8, #7953b0);*/
+    background: #4568DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+  }
+a,
+a:hover,
+a:focus {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar-btn {
+    outline: none !important;
+    border: none;
+    position: relative;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  perspective: 1500px;
+}
+
+#sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100vh;
+  z-index: 999;
+  background: #353941;
+  color: #fff;
+  transition: all 0.3s;
+  overflow-y: scroll;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+#dismiss {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: #353941;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#dismiss:hover {
+  background: #ff7e7e;
+  color: #353941;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #444f80;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  color: #353941;
+  background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #444f80;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #444f80;
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  background: #fff;
+  color: #353941;
+}
+
+a.article,
+a.article:hover {
+  background: #444f80 !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------
+  CONTENT STYLE
+----------------------------------------------------- */
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#sidebarCollapse {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+#sidebarCollapse span {
+  width: 80%;
+  height: 2px;
+  margin: 0 auto;
+  display: block;
+  background: #555;
+  transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+  transition-delay: 0.2s;
+}
+
+#sidebarCollapse span:first-of-type {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+#sidebarCollapse span:nth-of-type(2) {
+  opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+
+#sidebarCollapse.active span {
+  transform: none;
+  opacity: 1;
+  margin: 5px auto;
+}
+
+
+/* ---------------------------------------------------
+  MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+  #sidebar {
+      margin-left: -250px;
+      transform: rotateY(90deg);
+  }
+  #sidebar.active {
+      margin-left: 0;
+      transform: none;
+  }
+  #sidebarCollapse span:first-of-type,
+  #sidebarCollapse span:nth-of-type(2),
+  #sidebarCollapse span:last-of-type {
+      transform: none;
+      opacity: 1;
+      margin: 5px auto;
+  }
+  #sidebarCollapse.active span {
+      margin: 0 auto;
+  }
+  #sidebarCollapse.active span:first-of-type {
+      transform: rotate(45deg) translate(2px, 2px);
+  }
+  #sidebarCollapse.active span:nth-of-type(2) {
+      opacity: 0;
+  }
+  #sidebarCollapse.active span:last-of-type {
+      transform: rotate(-45deg) translate(1px, -1px);
+  }
+
+}
+/*-------------------------------------------------
+                    login window
+--------------------------------------------------*/
+  #login {
+    width: 440px;
+    color:#353941;
+  }
+  #login .btn {
+    float: left;
+    width: 48%;
+    font-size: 0.8rem;
+  }
+  #login .btn-btm {
+    padding: 0;
+  }
+  #login .btn-left {
+    margin-right: 4%;
+  }
+  #login #btn_sign_in {
+    color: #fff;
+  }
+  #login #btn_remember {
+    background: #fff;
+    border: 1px solid #ced4da;
+  }
+  #login #btn_remember:hover {
+    background: #f8f9fa;
+  }
+  #login h6,
+  #login label {
+    font-size: 0.8rem;
+  }
+  #login h6,
+  #login label,
+  #login #btn_remember {
+    color: #808080;
+  }
+  #login .fa {
+    padding-right: 10px;
+  }
+  #login hr {
+    clear: left;
+  }
+  #login .btm-links {
+    font-size: 0.8rem;
+    margin: 2px 0 0 0;
+  }
+  #login .btm-links #forgot-password {
+    float: left;
+    margin-left: 16px;
+  }
+  #login .btm-links #create-account {
+    float: right;
+    margin-right: 20px;
+  }
+  #account-form-container label {
+    text-align: right;
+    margin-top: 2px;
+  }
+  #account-form-container input,
+  #account-form-container select {
+    font-size: 0.875rem;
+  }
+  #account-form-container .col-sm-9 {
+    padding-left: 0;
+  }
+  #account-form-container .margin-zero {
+    margin-bottom: 0;
+  }
+  #account-form-container .form-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  #account-form-container .form-buttons>:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+/*--------------------------------------------------------
+                      modal windows
+----------------------------------------------------------*/
+  .modal .modal-dialog {
+    width: 480px;
+  }
+  .modal .form-group {
+    margin-bottom: 0px;
+  }
+  .modal .alert {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 8px 15px 8px 15px;
+  }
+  .modal .alert-dismissable,
+  .modal .close {
+    right: -4px;
+  }
+  .modal p {
+    margin: 0;
+    padding: 0;
+  }
+  .modal .modal-footer button {
+    width: 80px;
+  }
+  .center-vertical {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+/* ---------------------------------------------------
+                      Atlus Box
+----------------------------------------------------- */
+
+  * {
+    box-sizing: border-box;
+    color:floralwhite;
+  }
+  #Atlus_ul {
+    list-style-type: none;
+    text-align: right;
+    width: 8cm;    
+  } 
+  .flex-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    
+  
+  }
+  .flex-container > div {
+    background-color:#353941;
+    width: auto;
+    padding: 1%;
+    text-align: center;
+  }
+
+  #Atlus { color:rgb(255, 255, 255);}
+  #Atlus:nth-child(odd) { color: rgb(241, 182, 237); }
+
+  textarea {
+    color: #000000;
+    }

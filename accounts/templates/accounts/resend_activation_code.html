@@ -1,0 +1,26 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+    <div class="center-vertical" id="login">
+        <form class="card card-body bg-dark" method="post">
+            <h4>{% trans 'Resend an activation code' %}</h4>
+
+                {% csrf_token %}
+                {% bootstrap_form form %}
+
+                <button class="btn btn-primary">{% trans 'Next' %}</button>
+
+            <hr>
+
+            <ul>
+                <li>
+                    <a href="{% url 'accounts:log_in' %}">{% trans 'Log in' %}</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+{% endblock %}
