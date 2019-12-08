@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 import numpy as np
 import warnings
 import pickle
-from django.conf.urls.static import static
+#from django.conf.urls.static import static
 
 class IndexPageView(TemplateView):
     template_name = 'main/index.html'
@@ -13,10 +13,6 @@ class IndexPageView(TemplateView):
 
 class ChangeLanguageView(TemplateView):
     template_name = 'main/change_language.html'
-
-
-def atlus(request):
-    return render(request, 'main/Atlus.html')
 
 def boomerang(request):
     return render(request, 'main/Boomerang.html')

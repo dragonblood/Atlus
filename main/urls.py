@@ -9,13 +9,13 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('atlus/', include('Atlus.urls')),
 
     path('', IndexPageView.as_view(), name='index'),
 
     path('i18n/', include('django.conf.urls.i18n')),
     path('language/', ChangeLanguageView.as_view(), name='change_language'),
 
-    path('atlus/', views.atlus, name = 'atlus'),
     path('Boomerang/', views.boomerang, name = 'Boomerang'),
     path('Contact/', views.contact, name = 'Contact'),
     path('Portfolio/', views.portfolio, name = 'Portfolio'),
