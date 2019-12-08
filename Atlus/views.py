@@ -6,8 +6,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
+#from sklearn.externals import joblib
 
-from . forms import predictForm
+from . forms import PredictForm
 from . models import predicts
 from . serializers import predictsSerializers
 
@@ -15,10 +16,18 @@ import pickle
 import json
 import numpy as np
 
+
 def atlus(request):
     return render(request, 'Atlus.html')
 
-
+def predictform(request):
+    if request.method == "POST":
+        form = PredictForm(request.POST)
+        if form.is_valid():
+            #predictform = form.save(commit=False)
+            predictform.save()
+        else:
+            form = PredictForm()
 
 class predictView(viewsets.ModelViewSet):
     queryset = predicts.objects.all()
@@ -26,9 +35,9 @@ class predictView(viewsets.ModelViewSet):
 
 
 @api_view(["POST"])
-def approvereject(request):
+def yesno(request):
     try:
-        mdl=joblib.load("finalized_model.sav")
+        #mdl=joblib.load("finalized_model.sav")
         mydata=request.data
         mentalhealth_df = list(mydata.values())
 
@@ -144,10 +153,13 @@ def approvereject(request):
         numbersdf = (np.asarray(numbersdf)).reshape(1, -1)
 
         #What the fuck are these two lines
-        scalers=joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
-        X=scalers.transform(unit)
+        #scalers=joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
+       # X=scalers.transform(unit)
 
-        mdl=joblib.load("finalized_model.sav")
+        #mdl=joblib.load("finalized_model.sav")
+        filename = '/home/vipul/Desktop/Librus/Atlus/finalized_model.sav'
+        mdl = pickle.load(open(filename, 'rb'))
+
         result = mdl.predict(numbersdf)
         result = np.where(result > 0, 'Yes', 'No')
         return JsonResponse(result)

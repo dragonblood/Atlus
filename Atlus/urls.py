@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 router.register('Atlus', views.predictView)
 
 urlpatterns = [
-    path('', views.predictForm, name='atlus'),
+    path('', views.predictform, name='atlus'),
     path('api/', include(router.urls)),
-    path('status/', views.approvereject),
+    path('status/', views.yesno),
 ]
