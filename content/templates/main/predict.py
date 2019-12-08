@@ -2,17 +2,11 @@ import numpy as np
 import warnings
 import pickle
 
-warnings.filterwarnings('ignore')
-
-mentalhealth_df = []
-f = open("result.txt", "r")
-f1 = f.readlines()
-for line in f1:
-    mentalhealth_df.append(line.strip('\n'))
+mentalhealth_df = list(mydata.values())
 
 
-male = set(
-    ["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
+male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
+
 female = set(["cis female", "f", "female", "woman", "femake", "female ", "cis-female/femme", "female (cis)", "femail"])
 
 numbersdf = [None] * 21
@@ -120,8 +114,6 @@ ymn(mentalhealth_df[21], 17)
 ymn(mentalhealth_df[22], 18)
 ydkn(mentalhealth_df[23], 19)
 yn(mentalhealth_df[24], 20)
-
-print([float(i) for i in numbersdf])
 
 numbersdf = (np.asarray(numbersdf)).reshape(1, -1)
 

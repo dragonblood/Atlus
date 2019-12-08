@@ -6,11 +6,13 @@
 {% block content %}
 
 <body align="center">
-    <form action="#" method="get" id="Atlusfor">
+    <form method="post">
+        {% csrf_token %}
         <div class="flex-container">
             <div>
                 <h4>Your Response</h4>
-                <textarea form="Atlusfor" name="info_name" rows="26" cols="50"></textarea>
+                {{form}}
+                <!-- <textarea form="Atlusfor" name="info_name" rows="26" cols="50"></textarea> -->
             </div>
             <div>
                 <h3>Parameters</h3>
@@ -44,8 +46,7 @@
                     <hr>
                 </ul>
 
-                <button name="Atlus_button" class="flex-column btn btn-primary float-right" value=" Submit"> Submit
-                </button>
+                <button class="flex-column btn btn-primary float-right" type="Submit"> Submit </button>
             </div>
         </div>
     </form>
