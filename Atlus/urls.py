@@ -1,7 +1,13 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from . import views
 
+router = routers.DefaultRouter()
+router.register('Atlus', views.predictView)
+
 urlpatterns = [
-    path('', views.atlus, name='atlus'),
+    path('', views.predictForm, name='atlus'),
+    path('api/', include(router.urls)),
+    path('status/', views.approvereject),
 ]
