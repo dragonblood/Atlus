@@ -1,6 +1,6 @@
 # Librus
 
-Requirements:
+Requirements:<br>
 Django = 2.2.4<br>
 django-bootstrap4 = 0.0.8<br>
 djangorestframework = 3.10.3<br>
