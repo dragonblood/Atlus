@@ -1,18 +1,26 @@
 import os
-from os.path import dirname
+import warnings
 from django.utils.translation import ugettext_lazy as _
+from os.path import dirname
 
-BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
+warnings.simplefilter('error', DeprecationWarning)
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 
-SECRET_KEY = '3d305kajG5Jy8KBafCMpHwDIsNi0SqVaW'
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-DEBUG = False
-ALLOWED_HOSTS = [
-    'example.com',
-]
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '3%)4ya)u3q4!b6gtu*gh(wxzz@0=vg^k=6b!$3jd5t)c4^*rbg'
+
+DEBUG = True
+ALLOWED_HOSTS = []
 
 SITE_ID = 1
+
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,6 +32,7 @@ INSTALLED_APPS = [
 
     # Vendor apps
     'bootstrap4',
+    'rest_framework',
 
     # Application apps
     'main',
@@ -41,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = 'main.urls'
 
 TEMPLATES = [
     {
@@ -61,17 +70,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(CONTENT_DIR, 'tmp/emails')
+EMAIL_HOST_USER = 'petkar.vipul@gmail.com'
+DEFAULT_FROM_EMAIL = 'test@example.com'
 
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-DEFAULT_FROM_EMAIL = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+# Database
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -79,6 +86,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+# Password validation
+# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -97,14 +108,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ENABLE_USER_ACTIVATION = True
 DISABLE_USERNAME = False
-LOGIN_VIA_EMAIL = False
+LOGIN_VIA_EMAIL = True
 LOGIN_VIA_EMAIL_OR_USERNAME = True
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'accounts:log_in'
-USE_REMEMBER_ME = False
+USE_REMEMBER_ME = True
 
-RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = True
-EMAIL_ACTIVATION_AFTER_CHANGING = True
+RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = False
+ENABLE_ACTIVATION_AFTER_EMAIL_CHANGE = False
+
+SIGN_UP_FIELDS = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+if DISABLE_USERNAME:
+    SIGN_UP_FIELDS = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
@@ -133,7 +148,3 @@ STATICFILES_DIRS = [
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
-
-SIGN_UP_FIELDS = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-if DISABLE_USERNAME:
-    SIGN_UP_FIELDS = ['first_name', 'last_name', 'email', 'password1', 'password2']

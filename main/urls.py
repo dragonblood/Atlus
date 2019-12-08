@@ -15,8 +15,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('language/', ChangeLanguageView.as_view(), name='change_language'),
 
-    path('Atlus/', views.atlus, name = 'Atlus'),
-    path('Atlus_result', views.atlus, name = 'Atlus_result'),
+    path('atlus/', views.atlus, name = 'atlus'),
     path('Boomerang/', views.boomerang, name = 'Boomerang'),
     path('Contact/', views.contact, name = 'Contact'),
     path('Portfolio/', views.portfolio, name = 'Portfolio'),
@@ -27,4 +26,3 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
