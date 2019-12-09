@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
-#from sklearn.externals import joblib
+from sklearn.externals import joblib
 
 from . forms import PredictForm
 from . models import predicts
@@ -15,23 +15,27 @@ from . serializers import predictsSerializers
 import pickle
 import json
 import numpy as np
+import pandas as pd
 
 
-def atlus(request):
-    return render(request, 'Atlus.html')
+# def atlus(request):
+#     return render(request, 'Atlus.html')
 
 def predictform(request):
     if request.method == "POST":
         form = PredictForm(request.POST)
         if form.is_valid():
             #predictform = form.save(commit=False)
-            predictform.save()
-        else:
-            form = PredictForm()
+            info = cleaned_data['info']
+            print(info, "bittttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+            #predictform.save()
+    form = PredictForm()
+    return render(request, 'Atlus.html')
 
-class predictView(viewsets.ModelViewSet):
+class PredictView(viewsets.ModelViewSet):
     queryset = predicts.objects.all()
     serializer_class = predictsSerializers
+
 
 
 @api_view(["POST"])
@@ -40,7 +44,7 @@ def yesno(request):
         #mdl=joblib.load("finalized_model.sav")
         mydata=request.data
         mentalhealth_df = list(mydata.values())
-
+        print(mentalhealth_df)
         male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
         female = set(["cis female", "f", "female", "woman", "femake", "female ", "cis-female/femme", "female (cis)", "femail"])
 
@@ -156,12 +160,12 @@ def yesno(request):
         #scalers=joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
        # X=scalers.transform(unit)
 
-        #mdl=joblib.load("finalized_model.sav")
-        filename = '/home/vipul/Desktop/Librus/Atlus/finalized_model.sav'
-        mdl = pickle.load(open(filename, 'rb'))
+        mdl=joblib.load("/home/vipul/Desktop/Librus/Atlus/finalized_model.sav")
 
         result = mdl.predict(numbersdf)
-        result = np.where(result > 0, 'Yes', 'No')
-        return JsonResponse(result)
+        result = np.where(result > 0, True, False)
+        newdf=pd.DataFrame(result, columns=['Status'])
+        newdf=newdf.replace({True:'Yes', False:'No'})
+        return JsonResponse('Your Status is {}'.format(newdf), safe=False)
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)

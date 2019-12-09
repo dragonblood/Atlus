@@ -4,7 +4,7 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register('Atlus', views.predictView)
+router.register('Atlus', views.PredictView)
 
 urlpatterns = [
     path('', views.predictform, name='atlus'),

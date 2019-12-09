@@ -2,7 +2,7 @@ import numpy as np
 import warnings
 import pickle
 
-mentalhealth_df = list(mydata.values())
+mentalhealth_df = ['37', 'f', 'United States', 'IL', 'NA', 'No', 'Yes', 'Often', '6-25', 'No', 'Yes', 'Yes', 'Not sure', 'No', 'Yes', 'Yes', 'Somewhat easy', 'No', 'No', 'Some of them', 'Yes', 'No', 'Maybe', 'Yes', 'No', 'NA']#list(mydata.values())
 
 
 male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
@@ -117,7 +117,7 @@ yn(mentalhealth_df[24], 20)
 
 numbersdf = (np.asarray(numbersdf)).reshape(1, -1)
 
-filename = 'finalized_model.sav'
+filename = '/home/vipul/Desktop/Librus/Atlus/finalized_model.sav'
 loaded_model = pickle.load(open(filename, 'rb'))
 result = loaded_model.predict(numbersdf)
 prediction = np.where(result > 0, 'Yes', 'No')
