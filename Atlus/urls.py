@@ -8,6 +8,4 @@ router.register('Atlus', views.PredictView)
 
 urlpatterns = [
     path('', views.predictform, name='atlus'),
-    path('api/', include(router.urls)),
-    path('status/', views.yesno),
 ]

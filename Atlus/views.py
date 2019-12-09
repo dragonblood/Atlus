@@ -17,38 +17,31 @@ import json
 import numpy as np
 import pandas as pd
 
-
-# def atlus(request):
-#     return render(request, 'Atlus.html')
-
-def predictform(request):
-    if request.method == "POST":
-        form = PredictForm(request.POST)
-        if form.is_valid():
-            #predictform = form.save(commit=False)
-            info = cleaned_data['info']
-            print(info, "bittttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
-            #predictform.save()
-    form = PredictForm()
-    return render(request, 'Atlus.html')
-
 class PredictView(viewsets.ModelViewSet):
     queryset = predicts.objects.all()
     serializer_class = predictsSerializers
 
+def predictform(request):
+    if request.method == "POST":
+        # do something with text area data since SMS was checked
+        a = request.POST.get('info')
+        a = a.splitlines()
+        result = yesno(a)
+        return render(request, 'Atlus.html',{'result':result})
+    else:
+        return render(request, 'Atlus.html')
+    
 
-
-@api_view(["POST"])
-def yesno(request):
+def yesno(a):
     try:
-        #mdl=joblib.load("finalized_model.sav")
-        mydata=request.data
-        mentalhealth_df = list(mydata.values())
-        print(mentalhealth_df)
+        mdl=joblib.load("/home/vipul/Desktop/Librus-ad9761b51f774eaac0189608ca326727bd13e9e8/Atlus/finalized_model.sav")
+        #mydata=request.data
+        mentalhealth_df = a#list(mydata.values())
         male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
         female = set(["cis female", "f", "female", "woman", "femake", "female ", "cis-female/femme", "female (cis)", "femail"])
 
         numbersdf = [None] * 21
+        int(mentalhealth_df[0])
         numbersdf[0] = int(mentalhealth_df[0])
 
         if mentalhealth_df[1].lower() in male:
@@ -160,12 +153,10 @@ def yesno(request):
         #scalers=joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
        # X=scalers.transform(unit)
 
-        mdl=joblib.load("/home/vipul/Desktop/Librus/Atlus/finalized_model.sav")
-
         result = mdl.predict(numbersdf)
         result = np.where(result > 0, True, False)
         newdf=pd.DataFrame(result, columns=['Status'])
         newdf=newdf.replace({True:'Yes', False:'No'})
-        return JsonResponse('Your Status is {}'.format(newdf), safe=False)
+        return newdf
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
