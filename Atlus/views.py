@@ -27,7 +27,7 @@ def predictform(request):
         if form.is_valid():
             #predictform = form.save(commit=False)
             info = cleaned_data['info']
-            print(info, "bittttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+            print(info, "bittttttttttt")
             #predictform.save()
     form = PredictForm()
     return render(request, 'Atlus.html')
@@ -38,11 +38,17 @@ class PredictView(viewsets.ModelViewSet):
 
 
 
-@api_view(["POST"])
+#@api_view(["POST"])
 def yesno(request):
-    try:
+    posts = predicts.objects.all()
+
+    if request.POST.get('action') == 'post':
+        title = request.POST.get('firstname')
+        info = request.POST.get('info')
+
         #mdl=joblib.load("finalized_model.sav")
         mydata=request.data
+        print(mydata)
         mentalhealth_df = list(mydata.values())
         print(mentalhealth_df)
         male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
@@ -158,7 +164,7 @@ def yesno(request):
 
         #What the fuck are these two lines
         #scalers=joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
-       # X=scalers.transform(unit)
+        # X=scalers.transform(unit)
 
         mdl=joblib.load("/home/vipul/Desktop/Librus/Atlus/finalized_model.sav")
 
@@ -166,6 +172,16 @@ def yesno(request):
         result = np.where(result > 0, True, False)
         newdf=pd.DataFrame(result, columns=['Status'])
         newdf=newdf.replace({True:'Yes', False:'No'})
-        return JsonResponse('Your Status is {}'.format(newdf), safe=False)
-    except ValueError as e:
-        return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
+
+        response_data['title'] = title
+        response_data['info'] = newdf
+
+        predicts.objects.create(
+        title = title,
+        info = info,
+        )
+        return JsonResponse(response_data)
+        #return JsonResponse('Your Status is {}'.format(newdf))
+        #return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
+
+    return render(request, 'Atlus.html', {'posts':posts}) 

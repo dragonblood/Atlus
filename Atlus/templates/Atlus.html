@@ -6,14 +6,12 @@
 {% block content %}
 
 <body align="center">
-    <form method="post">
+    <form method="POST" id="post-form">
         {% csrf_token %}
         <div class="flex-container">
             <div>
-                <h4>Your Response</h4>
-                <!-- {{forms}} -->
-                <textarea form="Atlusfor" name="info_name" rows="26" cols="50"></textarea>
-                {{info}}
+                <h4><label>Your Response</label></h4>
+                <textarea class="form-control" id="info" rows="26" cols="50"></textarea>
             </div>
             <div>
                 <h3>Parameters</h3>
@@ -51,5 +49,20 @@
             </div>
         </div>
     </form>
-</body>
-{% endblock %}
+
+    <div class="row mb-2 posts">
+        {% for post in posts %}
+        <div class="col-md-6">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250">
+                <!--  position-relative -->
+                <p>dicksssssss</p>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">{{post.title}}</h3>
+                    <p class="mb-auto">{{post.info}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock %}
