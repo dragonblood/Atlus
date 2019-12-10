@@ -7,6 +7,7 @@ from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from sklearn.externals import joblib
+from django.contrib import messages
 
 from . forms import PredictForm
 from . models import predicts
@@ -17,26 +18,24 @@ import json
 import numpy as np
 import pandas as pd
 
+
+
 class PredictView(viewsets.ModelViewSet):
     queryset = predicts.objects.all()
     serializer_class = predictsSerializers
 
 def predictform(request):
     if request.method == "POST":
-        # do something with text area data since SMS was checked
         a = request.POST.get('info')
         a = a.splitlines()
         result = yesno(a)
-        return render(request, 'Atlus.html',{'result':result})
-    else:
-        return render(request, 'Atlus.html')
+        messages.success(request, result)
+    return render(request, 'Atlus.html')
     
-
 def yesno(a):
     try:
-        mdl=joblib.load("/home/vipul/Desktop/Librus-ad9761b51f774eaac0189608ca326727bd13e9e8/Atlus/finalized_model.sav")
-        #mydata=request.data
-        mentalhealth_df = a#list(mydata.values())
+        mdl=joblib.load("finalized_model.sav")
+        mentalhealth_df = a
         male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
         female = set(["cis female", "f", "female", "woman", "femake", "female ", "cis-female/femme", "female (cis)", "femail"])
 
@@ -149,14 +148,8 @@ def yesno(a):
 
         numbersdf = (np.asarray(numbersdf)).reshape(1, -1)
 
-        #What the fuck are these two lines
-        #scalers=joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
-       # X=scalers.transform(unit)
-
         result = mdl.predict(numbersdf)
         result = np.where(result > 0, True, False)
-        newdf=pd.DataFrame(result, columns=['Status'])
-        newdf=newdf.replace({True:'Yes', False:'No'})
-        return newdf
+        return result[0]
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
