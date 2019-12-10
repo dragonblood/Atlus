@@ -6,7 +6,7 @@
 {% block content %}
 
 <body align="center">
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         <div class="flex-container">
             <div>
@@ -45,9 +45,14 @@
                     <hr>
                 </ul>
                 <button class="flex-column btn btn-primary float-right" type="Submit"> Submit </button>
-                {{result}}
             </div>
         </div>
     </form>
-</body>
-{% endblock %}
+    {%  if messages %}
+    <ul class=messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endblock %}
