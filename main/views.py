@@ -10,12 +10,8 @@ import pickle
 class IndexPageView(TemplateView):
     template_name = 'main/index.html'
 
-
 class ChangeLanguageView(TemplateView):
     template_name = 'main/change_language.html'
-
-def boomerang(request):
-    return render(request, 'main/Boomerang.html')
 
 def about(request):
     return render(request, 'static/About.html')
