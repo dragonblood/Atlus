@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Vendor apps
     'bootstrap4',
     'rest_framework',
+    'corsheaders', 
 
     # Application apps
     'main',
@@ -150,3 +151,7 @@ STATICFILES_DIRS = [
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
+
+CORS_ORIGIN_WHITELIST = (
+         'localhost:3000/'
+     )
