@@ -152,6 +152,6 @@ LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
 
-CORS_ORIGIN_WHITELIST = (
-         'localhost:3000/'
-     )
+# CORS_ORIGIN_WHITELIST = (
+#          'localhost:3000/'
+#      )
