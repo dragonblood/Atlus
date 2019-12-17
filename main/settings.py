@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     # Vendor apps
     'bootstrap4',
     'rest_framework',
-    'corsheaders', 
+    'corsheaders',  
 
     # Application apps
     'main',

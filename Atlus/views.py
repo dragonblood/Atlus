@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
-from sklearn.externals import joblib
 from django.contrib import messages
 
 from . forms import PredictForm
@@ -17,6 +16,7 @@ import pickle
 import json
 import numpy as np
 import pandas as pd
+import joblib
 
 
 
