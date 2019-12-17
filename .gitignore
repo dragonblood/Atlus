@@ -2,3 +2,9 @@ db.sqlite3
 Atlus/pickel-maker.py
 guru99.txt
 Boomerang/boomerang/node_modules
+
+
+Boomerang/__pycache__
+Atlus/__pycache__
+accounts/__pycache__
+main/__pycache__
