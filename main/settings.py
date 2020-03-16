@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'Atlus',
-    'Boomerang',
+    #'Boomerang',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -148,12 +149,11 @@ MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(CONTENT_DIR, 'assets'),
+    #<!-- <li><a href="{% url 'boomerang' %}">{% trans 'Project Boomerang' %}</a></li> -->
 ]
 
 LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
 
-# CORS_ORIGIN_WHITELIST = (
-#          'localhost:3000/'
-#      )
+CORS_ORIGIN_ALLOW_ALL = True 

@@ -1,0 +1,22 @@
+{
+  "name": "librus",
+  "version": "1.0.0",
+  "description": "Requirements:<br> <br> Django = 2.2.4<br> Django-bootstrap4 = 0.0.8<br> Djangorestframework = 3.10.3<br> Numpy = 1.17.4<br> Sqlparse = 0.3.0<br>",
+  "main": "gulpfile.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragonblood/Librus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragonblood/Librus/issues"
+  },
+  "homepage": "https://github.com/dragonblood/Librus#readme"
+}
