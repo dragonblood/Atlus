@@ -19,7 +19,10 @@
     <title>Librus</title>
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/black-dashboard.css' %}" rel="stylesheet">
+
     <link
         href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
         rel="stylesheet">
@@ -39,16 +42,14 @@
             {% if request.user.is_authenticated %}
             <div class="nav-item">
                 <nav class="navbar navbar-expand-lg">
-                    <div class="container-fluid">
-                        <button type="button" id="sidebarCollapse" class="btn navbar-btn btn-danger">
-                            <i class="fas fa-align-center btn-dark"></i>
-                        </button>
-                    </div>
+                    <button type="button" id="sidebarCollapse">
+                        <i class="bg-dark fa fa-align-left"></i>
+                    </button>
                 </nav>
             </div>
             <div class="navbar-nav ml-auto">
-                <div class="nav-item"><button class="btn navbar-btn btn-outline-danger" id="btn-logout"><a
-                            class="nav-link" href="{% url 'accounts:log_out' %}">{% trans 'Log out' %}</a></button>
+                <div class="nav-item"><button class="btn navbar-btn btn-primary" id="btn-logout"><a class="nav-link"
+                            href="{% url 'accounts:log_out' %}">{% trans 'Log out' %}</a></button>
                 </div>
             </div>
             <nav id="sidebar">
@@ -62,8 +63,8 @@
                             class="dropdown-toggle">Projects</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="{% url 'atlus' %}">{% trans 'Project Atlus' %}</a></li>
-                            
-                            <li><a href="#">{% trans 'Project C' %}</a></li>
+                            <li><a href="#">{% trans 'Project Boomerang' %}</a></li>
+                            <li><a href="#">{% trans 'Project Cataract' %}</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'About' %}">{% trans 'About' %}</a></li>
@@ -73,20 +74,16 @@
             </nav>
             {% else %}
             <div class="nav-item">
-                <div class="navbar-brand">
-                    <button class="btn navbar-btn btn-outline-light">
-                        <h4><a class="nav-link" href="{% url 'accounts:log_in' %}">{% trans 'Log in' %}</a></h2>
+                <div>
+                    <button class="btn">
+                        <a class="nav-link" href="{% url 'accounts:log_in' %}">{% trans 'Log in' %}</a>
+                    </button>
+                    <button class="btn">
+                        <a class="nav-link" href="{% url 'accounts:sign_up' %}">{% trans 'Create an account' %}</a>
                     </button>
                 </div>
             </div>
-            <div class="nav-item">
-                <div class="navbar-brand">
-                    <button class="btn navbar-btn btn-outline-light">
-                        <h4><a class="nav-link" href="{% url 'accounts:sign_up' %}">{% trans 'Create an account' %}</a>
-                            </h2>
-                    </button>
-                </div>
-            </div>
+
             <div class="navbar-nav ml-auto">
                 <div class="nav-item">
                     <h4><a class="nav-link" href="{% url 'change_language' %}">{% trans 'Change language' %}</a></h2>
@@ -114,9 +111,10 @@
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-    </script>
+        </script>
 
 
 </body>
 
 </html>
+<link href="{% static 'css/black-dashboard.css' %}" rel="stylesheet">

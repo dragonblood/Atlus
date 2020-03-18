@@ -149,7 +149,7 @@ MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(CONTENT_DIR, 'assets'),
-    #<!-- <li><a href="{% url 'boomerang' %}">{% trans 'Project Boomerang' %}</a></li> -->
+    
 ]
 
 LOCALE_PATHS = [

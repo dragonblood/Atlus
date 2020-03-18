@@ -4,20 +4,29 @@
 {% load bootstrap4 %}
 {% block content %}
 
-    {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
 
-        <div class="center-vertical card card-body bg-dark center-vertical">
-                <h3>Update Information</h3><hr/>
-                <button class="btn btn-outline-primary"><a href="{% url 'accounts:change_profile' %}">{% trans 'Change profile' %}</a></button><hr/>
-                <button class="btn btn-outline-warning"><a href="{% url 'accounts:change_email' %}">{% trans 'Change email' %}</a></button><hr/>
-                <button class="btn btn-outline-danger"><a href="{% url 'accounts:change_password' %}">{% trans 'Change password' %}</a></button>
-        </div>       
 
-         
-    {% else %}
+<div class="center-vertical card card-body bg-dark text-center">
+    <h3>Update Information</h3>
+    <h1>
+        <hr />
+        <button class="btn btn-info"><a
+                href="{% url 'accounts:change_profile' %}">{% trans 'Change profile   ' %}</a></button>
+        <hr />
+        <button class="btn btn-success"><a
+                href="{% url 'accounts:change_email' %}">{% trans 'Change email' %}</a></button>
+        <hr />
+        <button class="btn btn-danger"><a
+                href="{% url 'accounts:change_password' %}">{% trans 'Change password' %}</a></button>
+    </h1>
+</div>
 
-        {% trans 'You are a guest.' %}
 
-    {% endif %}
+{% else %}
+
+{% trans 'You are a guest.' %}
+
+{% endif %}
 
 {% endblock %}
