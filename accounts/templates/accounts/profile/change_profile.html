@@ -1,26 +1,27 @@
-{% extends 'layouts/default/page.html' %}
-
-{% load bootstrap4 %}
-{% load i18n %}
-
+{% extends 'layouts/default/page.html' %} {% load bootstrap4 %} {% load i18n %}
 {% block content %}
-    <div class="center-vertical" id="login">
-        <form class="card card-body bg-dark" method="post">
-            <h4>{% trans 'Change profile' %}</h4>
+<div class="center-vertical" id="login">
+  <form class="card card-body bg-dark" method="post">
+    <h4>{% trans 'Change profile' %}</h4>
 
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            
+    {% csrf_token %} {% bootstrap_form form %}
 
-            <button class="btn btn-success">{% trans 'Change' %}</button>
+    <button class="btn btn">{% trans 'Change' %}</button>
 
-            <hr/>
-            <p class = "tpbutton btn-toolbar text-center">
-                <button class="btn btn-outline-danger"><a href="{% url 'accounts:change_password' %}">{% trans 'Change password' %}</a></button>
-                <button class="btn btn-outline-warning"><a href="{% url 'accounts:change_email' %}">{% trans 'Change email' %}</a></button>
-            </p>
-            
-        </form>
-    </div>
+    <hr />
+    <p class="tpbutton btn-toolbar text-center">
+      <button class="btn btn-danger">
+        <a href="{% url 'accounts:change_password' %}"
+          >{% trans 'Change password' %}</a
+        >
+      </button>
+      <button class="btn btn-success">
+        <a href="{% url 'accounts:change_email' %}"
+          >{% trans 'Change email' %}</a
+        >
+      </button>
+    </p>
+  </form>
+</div>
 
 {% endblock %}

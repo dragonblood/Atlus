@@ -14,12 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="An example of Django project with basic user functionality.">
 
-    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
 
     <title>Librus</title>
 
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link href="{% static 'css/black-dashboard.css' %}" rel="stylesheet">
 
@@ -35,21 +34,24 @@
 </head>
 
 <body>
-
     <div id="nav">
         <!-- this file contain sidebar and top bar. Things that pop up after signing in.-->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
+            <img alt="Libra" width="100px" height="45px" src="{% static 'img/LibrusLogo.png' %}"/>&nbsp&nbsp
             {% if request.user.is_authenticated %}
-            <div class="nav-item">
+            <div>
                 <nav class="navbar navbar-expand-lg">
-                    <button type="button" id="sidebarCollapse">
-                        <i class="bg-dark fa fa-align-left"></i>
-                    </button>
+                    <button class="bg-dark" id="sidebarCollapse">
+                        <b>&#9776;</b>
+                    </button>                     
                 </nav>
             </div>
             <div class="navbar-nav ml-auto">
-                <div class="nav-item"><button class="btn navbar-btn btn-primary" id="btn-logout"><a class="nav-link"
-                            href="{% url 'accounts:log_out' %}">{% trans 'Log out' %}</a></button>
+                <div class="nav-item">
+                    <a class="h3" href="{% url 'index' %}">{{ request.user.username }}&nbsp&nbsp</a>
+                    <button class="btn navbar-btn btn-primary" id="btn-logout">
+                        <a class="nav-link" href="{% url 'accounts:log_out' %}">{% trans 'Log out' %}</a>
+                    </button>
                 </div>
             </div>
             <nav id="sidebar">
@@ -57,19 +59,17 @@
                 <div class="sidebar-header">
                     <h3>Explore <br>Projects</h3>
                 </div>
-                <ul class="list-unstyled components">
-                    <p><a href="{% url 'index' %}">{{ request.user.username }}</a></p>
+                <ul class="list-unstyled components">                    
                     <li class="active"><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">Projects</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="{% url 'atlus' %}">{% trans 'Project Atlus' %}</a></li>
-                            <li><a href="#">{% trans 'Project Boomerang' %}</a></li>
-                            <li><a href="#">{% trans 'Project Cataract' %}</a></li>
+                            <li class="h4"><a href="{% url 'atlus' %}">{% trans 'Project Atlus' %}</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'About' %}">{% trans 'About' %}</a></li>
                     <li><a href="{% url 'Portfolio' %}">{% trans 'Portfolio' %}</a></li>
                     <li><a href="{% url 'Contact' %}">{% trans 'Contact' %}</a></li>
+                    <li><a class="nav-link" href="{% url 'change_language' %}">{% trans 'Change language' %}</a></li>
                 </ul>
             </nav>
             {% else %}
@@ -103,12 +103,10 @@
 
     </div>
 
-    <script src="{% static 'vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{% static 'js/Script.js' %}"></script>
-    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
         </script>
