@@ -34,7 +34,7 @@ def predictform(request):
     
 def yesno(a):
     try:
-        mdl=joblib.load("finalized_model.sav")
+        mdl=joblib.load("content/assets/models/Model.sav")
         mentalhealth_df = a
         male = set(["male", "m", "male-ish", "maile", "mal", "male (cis)", "make", "male ", "man", "msle", "mail", "malr", "cis man"])
         female = set(["cis female", "f", "female", "woman", "femake", "female ", "cis-female/femme", "female (cis)", "femail"])
