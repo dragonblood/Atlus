@@ -20,6 +20,15 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+#navbarr {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+    font-size: 14px;
+}
+
 a,
 a:hover,
 a:focus {
