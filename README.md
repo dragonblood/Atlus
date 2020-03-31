@@ -1,6 +1,6 @@
 # Librus
 
-Copy and Paste These Commands In Terminal:
+## Steps To Follow:
 ```
 git clone https://github.com/dragonblood/Atlus.git
 cd Atlus
