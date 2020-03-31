@@ -19,7 +19,9 @@ python manage.py runserver
 ## 3. Screenshots
 | Initial Screen | Entered Form Data | Result Displayed |
 | -------|--------------|-----------------|
-| < img src="./Github_readme_img/Screenshot%20from%202020-03-31%2018-52-52.png" /> | < img src="./Github_readme_img/Screenshot%20from%202020-03-31%2018-54-48.png" /> | < img src="./Github_readme_img/Screenshot%20from%202020-03-31%2018-54-18.png />|
+|![Initial Screen](https://github.com/dragonblood/Atlus/blob/master/Github_readme_img/Screenshot%20from%202020-03-31%2018-52-52.png)
+|![Entered Form Data](https://github.com/dragonblood/Atlus/blob/master/Github_readme_img/Screenshot%20from%202020-03-31%2018-54-48.png)
+|![Result Displayed](https://github.com/dragonblood/Atlus/blob/master/Github_readme_img/Screenshot%20from%202020-03-31%2018-54-18.png)|
 
 ## Please Feel Free to raise an issue.
 ## Take Permission Before using it in your work.
