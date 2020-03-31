@@ -2,16 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import collections
-
-try:
-    collectionsAbc = collections.abc
-except AttributeError:
-    collectionsAbc = collections
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'main.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Atlus.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
