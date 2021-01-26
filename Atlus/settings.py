@@ -13,11 +13,11 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 SECRET_KEY = ')hrzx936tyg-0cl3)gnl3d-qc6pka21_d-l)g!30^g-b(=#!=i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['vipulatlus.herokuapp.com', '127.0.0.1']
 
-ALLOWED_HOSTS = []
-
-
+SITE_ID = 1
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Atlus.urls'

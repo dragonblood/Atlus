@@ -12,41 +12,55 @@
 
     <link rel="icon" href="{% static 'img/favicon.png' %}">
 
-    <title>Librus</title>
+    <title>Project Atlus</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    <link href="{% static 'css/black-dashboard.css' %}" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" rel="stylesheet">
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+        rel="stylesheet">
 
 
 </head>
 
 <body>
-    <div id="nav">
-        <!-- this file contain sidebar and top bar. Things that pop up after signing in.-->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
-            <img alt="Libra" width="100px" height="45px" src="{% static 'img/LibrusLogo.png' %}" />&nbsp&nbsp
-        </nav>
+    <div class="overlay">
+        <div id="nav">
+            <!-- this file contain sidebar and top bar. Things that pop up after signing in.-->
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
+                <h2>Project Atlus<br></h2>
+            </nav>
+        </div>
+        <div class="container-fluid mt-3">
+
+            {% bootstrap_messages %} {% block content %} {% endblock %}
+        </div>
     </div>
-    <div class="container-fluid mt-3">
-
-        {% bootstrap_messages %} {% block content %} No content. {% endblock %}
-
+    <div class="footer">
+        <p><i>Made BY Dragonblood With ❤<br> Visit My Site <a href="http://Vipulpetkar.ml">Vipul petkar</i></a></p>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/Script.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    <css-doodle click-to-update>
+        :doodle {
+          @grid: 18 / 100vmax;
+          background: #0a0c27;
+        }
+        --hue: calc(180 + 1.5 * @row * @col);
+        background: hsl(var(--hue), 50%, 70%);
+        margin: -.5px;
+        transition: @r(.5s) ease;
+        clip-path: polygon(@pick(
+          '0 0, 100% 0, 100% 100%',
+          '0 0, 100% 0, 0 100%',
+          '0 0, 100% 100%, 0 100%',
+          '100% 0, 100% 100%, 0 100%'
+        ));
+      </css-doodle>
+
+
     </script>
-
+    <script src='https://unpkg.com/css-doodle@0.13.9/css-doodle.min.js'></script>
 
 </body>
 
