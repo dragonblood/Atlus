@@ -16,6 +16,14 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+### Or (PIP method)
+```
+pipenv shell
+pipenv install
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
 ## 3. Screenshots
 | Initial Screen | Entered Form Data | Result Displayed |
 | -------|--------------|-----------------|
