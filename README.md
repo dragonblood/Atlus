@@ -1,4 +1,4 @@
-# Atlus
+# Atlus [![Django CI](https://github.com/dragonblood/Atlus/actions/workflows/django.yml/badge.svg)](https://github.com/dragonblood/Atlus/actions/workflows/django.yml)
 ## 1. About:
 
 when the data is entred in HTML form, It is then submitted using POST and sent through RestAPI to the Classifier, trained using Gradient Boosted Trees.Then the prediction is made using model.sav file (Pickle) and result is displayed as Message on the same page.
