@@ -14,7 +14,7 @@ SECRET_KEY = ')hrzx936tyg-0cl3)gnl3d-qc6pka21_d-l)g!30^g-b(=#!=i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['vipulatlus.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['vipulatlus.herokuapp.com', 'atlus.vipulpetkar.ml]
 
 SITE_ID = 1
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
