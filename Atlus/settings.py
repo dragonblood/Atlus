@@ -13,7 +13,7 @@ CONTENT_DIR = os.path.join(BASE_DIR, 'content')
 SECRET_KEY = ')hrzx936tyg-0cl3)gnl3d-qc6pka21_d-l)g!30^g-b(=#!=i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['vipulatlus.herokuapp.com', 'atlus.vipulpetkar.ml']
 
 SITE_ID = 1
