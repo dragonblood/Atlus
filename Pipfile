@@ -12,7 +12,7 @@ djangorestframework = "==3.11.0"
 gunicorn = "*"
 pandas = "==1.0.3"
 scikit-learn = "==0.22.1"
-numpy = "==1.18.1"
+numpy = "==1.22.0"
 whitenoise = "*"
 
 [requires]
