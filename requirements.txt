@@ -1,6 +1,6 @@
 asgiref==3.6.0
 beautifulsoup4==4.11.1
-Django==4.1.5
+Django==4.1.7
 django-bootstrap4==22.3
 djangorestframework==3.14.0
 gunicorn==20.1.0
